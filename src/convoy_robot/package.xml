@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>convoy_robot</name><version>0.1.0</version>
+  <description>Leader-only map odometry and path bridge snapshot</description>
+  <maintainer email="sunuk@todo.todo">sunuk</maintainer>
+  <license>TODO: License declaration</license>
+  <exec_depend>rclpy</exec_depend><exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend><exec_depend>tf2_ros</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

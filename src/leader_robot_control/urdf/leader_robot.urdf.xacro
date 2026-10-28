@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="leader_robot">
+
+    <!-- ============================= -->
+    <!-- Base Link -->
+    <!-- ============================= -->
+
+    <link name="base_link">
+
+        <visual>
+            <geometry>
+                <box size="0.60 0.50 0.15"/>
+            </geometry>
+
+            <origin xyz="0 0 0.10"
+                    rpy="0 0 0"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="0.60 0.50 0.15"/>
+            </geometry>
+
+            <origin xyz="0 0 0.10"
+                    rpy="0 0 0"/>
+        </collision>
+
+    </link>
+
+
+    <!-- ============================= -->
+    <!-- Left Wheel -->
+    <!-- ============================= -->
+
+    <link name="left_wheel">
+
+        <visual>
+            <geometry>
+                <cylinder radius="0.075"
+                          length="0.05"/>
+            </geometry>
+
+            <origin xyz="0 0 0"
+                    rpy="1.5708 0 0"/>
+        </visual>
+
+    </link>
+
+
+    <joint name="left_wheel_joint"
+           type="continuous">
+
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+
+        <origin xyz="0 0.280 0.075"
+                rpy="0 0 0"/>
+
+        <axis xyz="0 1 0"/>
+
+    </joint>
+
+
+    <!-- ============================= -->
+    <!-- Right Wheel -->
+    <!-- ============================= -->
+
+    <link name="right_wheel">
+
+        <visual>
+            <geometry>
+                <cylinder radius="0.075"
+                          length="0.05"/>
+            </geometry>
+
+            <origin xyz="0 0 0"
+                    rpy="1.5708 0 0"/>
+        </visual>
+
+    </link>
+
+
+    <joint name="right_wheel_joint"
+           type="continuous">
+
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+
+        <origin xyz="0 -0.280 0.075"
+                rpy="0 0 0"/>
+
+        <axis xyz="0 1 0"/>
+
+    </joint>
+
+
+    <!-- ============================= -->
+    <!-- LiDAR -->
+    <!-- ============================= -->
+
+    <link name="laser">
+
+        <visual>
+            <geometry>
+                <cylinder radius="0.04"
+                          length="0.04"/>
+            </geometry>
+
+            <origin xyz="0 0 0"
+                    rpy="0 0 0"/>
+        </visual>
+
+    </link>
+
+
+    <joint name="laser_joint"
+           type="fixed">
+
+        <parent link="base_link"/>
+        <child link="laser"/>
+
+        <!-- Measured scan center: x=0.26m, centered, ground height=0.24m. Yaw pending physical confirmation. -->
+        <origin xyz="0.26 0 0.24"
+                rpy="0 0 3.14159265359"/>
+
+    </joint>
+
+
+    <!-- ============================= -->
+    <!-- IMU -->
+    <!-- ============================= -->
+
+    <link name="imu_link">
+
+        <visual>
+            <geometry>
+                <box size="0.05 0.04 0.02"/>
+            </geometry>
+
+            <origin xyz="0 0 0"
+                    rpy="0 0 0"/>
+        </visual>
+
+    </link>
+
+
+    <joint name="imu_joint"
+           type="fixed">
+
+        <parent link="base_link"/>
+        <child link="imu_link"/>
+
+        <!-- 임시 IMU 위치 -->
+        <origin xyz="0 0 0.15"
+                rpy="0 0 0"/>
+
+    </joint>
+
+</robot>

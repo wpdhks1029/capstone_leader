@@ -1,0 +1,12 @@
+real_leader_bridge:
+  ros__parameters:
+    map_frame: map
+    base_frame: base_link
+    filtered_odom_topic: /odometry/filtered
+    leader_odom_topic: /leader/odom
+    leader_path_topic: /leader/path
+    path_min_distance: 0.10
+    publish_rate: 10.0
+    max_path_points: 5000
+    tf_timeout: 0.5
+    odom_timeout: 0.5
